@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="finalProject.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: darkgray;
+        }
+        
+        iframe {
+            margin-left: 465px;
+            margin-top: 80px;
+        }
+        
+        #imageWrapper {
+            display: flex;
+        }
+        
+        .images {
+            flex: 50%;
+            padding-left: 80px;
+            padding-top: 100px;
+        }
+        
+        #pongMachine {
+            padding-left: 300px;
+            padding-top: 130px;
+        }
+        
+        img {
+            width: 300px;
+        }
+        
+        #rules {
+            margin: 0;
+            position: absolute;
+            left: 36.5%;
+            bottom: 25%;
+            padding: 14px 40px;
+            font-size: 20pt;
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+        
+        #rulesLoad {
+            margin: 0;
+            bottom: 30%;
+            position: absolute;
+        }
+        
+        #loader {
+            display: none;
+            margin-left: 625px;
+        }
+        .loadNode {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 100%;
+            margin: 10px 5px;
+            transition: background-color .2s;
+        }
+        .loadNode:nth-of-type(1) {
+            background-color: #aaa;
+        }
+        .loadNode:nth-of-type(2) {
+            background-color: #777;
+        }
+        .loadNode:nth-of-type(3) {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"></a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+        <img src="images/pong.jpg" alt="swim" id="logo">
+            <li class="nav-item">
+                <a class="nav-link" href="loginForm.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                Home
+              </a>
+            </li>
+         </ul>
+    </nav>
+        <div>
+            <iframe width="420" height="300" src="https://www.youtube.com/embed/fiShX2pTz9A">
+            </iframe>
+        </div>
+    <div>
+        <div id="loader">
+            <div class="loadNode"></div>
+            <div class="loadNode"></div>
+            <div class="loadNode"></div>
+        </div>
+        <div>
+            <p id="rulesLoad"></p>
+            <button id="rules" onclick="showRules(), hide()">Click Here for the Rules</button>
+        </div> 
+        <div id="imageWrapper">
+            <div class="images">
+                <img src="images/pongPlay.png" alt="pongplay">
+            </div>
+            <div class="images" id="pongMachine">
+                <img src="images/pongMachine.jpg" alt="pongmachine">
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<!--
+    //        function updateInfo(quoteID) {
+//			var xmlHttp = new XMLHttpRequest();
+//		
+//			xmlHttp.onload = function() {
+//				if (xmlHttp.status == 200) {
+//					var infoBox = document.getElementById('infoBox');
+//					infoBox.innerHTML = xmlHttp.responseText;
+//				  }
+//			}
+//		
+//			var reqURL = "updateInfo.php?infoId=" + quoteID;
+//		
+//			xmlHttp.open("GET", reqURL, true);
+//			xmlHttp.send();
+//		}
+-->
+    <script>
+        function hide(){
+            document.getElementById("rules").style.display = "none";
+        }
+        
+        function showRules(){
+            var xmlHttp = new XMLHttpRequest();
+            
+            xmlHttp.onreadystatechange = function() {
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                    document.getElementById("loader").style.display = "none";
+                    
+                    document.getElementById("rulesLoad").innerHTML = xmlHttp.responseText;
+//                    var rulesBox = document.getElementById("rules");
+//                    rulesBox.innerHTML = xmlHttp.responseText;
+                }
+            }
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("rulesLoad").innerHTML = "";
+            
+            xmlHttp.open("GET", "rules.php", true);
+            xmlHttp.send();
+            
+        }
+        var tick = 1;
+        setInterval(function() {
+            var loadNodes = document.querySelectorAll(".loadNode");
+            if (tick == 1) {
+                backgroundColors = ["#333", "#aaa", "#777"];
+                tick = 2;
+            }
+            else if (tick == 2) {
+                backgroundColors = ["#777", "#333", "#aaa"];
+                tick = 3
+            }
+            else {
+                backgroundColors = ["#aaa", "#777", "#333"];
+                tick = 1;
+            }
+            loadNodes[0].style.backgroundColor = backgroundColors[0];
+            loadNodes[1].style.backgroundColor = backgroundColors[1];
+            loadNodes[2].style.backgroundColor = backgroundColors[2];
+        }, 200);
+    </script>
+</body>
+
+</html>

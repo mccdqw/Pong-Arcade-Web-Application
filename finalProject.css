@@ -1,0 +1,137 @@
+/* PONG letters boucing code: https://www.biob.in/2019/01/bouncing-text-animation-effect-using.html */
+h1 {
+    text-align: center;
+    margin-top: 150px;
+    color: white;
+    text-shadow: 4px 4px 0 black;
+    font-size: 80pt;
+    -webkit-animation: bounce 1s ease infinite alternate;
+    -moz-animation: bounce 1s ease infinite alternate;
+    animation: bounce 1s ease infinite alternate;
+}
+
+#pong i {
+    position: relative;
+    top: 10px;
+    font-style: normal;
+    -webkit-animation: bounce 1s ease infinite alternate;
+    -moz-animation: bounce 1s ease infinite alternate;
+    animation: bounce 1s ease infinite alternate;
+}
+
+#pong i:nth-child(1) {
+    -moz-animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+
+#pong i:nth-child(2) {
+    -moz-animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+
+#pong i:nth-child(3) {
+    -moz-animation-delay: .6s;
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+}
+
+#pong i:nth-child(4) {
+    -moz-animation-delay: .8s;
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s;
+}
+
+@keyframes bounce { 100% { top: -10px; } }
+@-webkit-keyframes bounce { 100% { top: -10px; } }
+@-moz-keyframes bounce { 100% { top: -10px; } }
+
+
+p {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#logo {
+    width: 10%;
+    padding-right: 30px;
+}
+
+.nav-link {
+    font-size: 20pt;
+}
+
+body {
+    background-color: darkgray;
+}
+
+#stage {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    font-size: 16pt;
+    text-align: center;
+}
+
+/* Created by Professor Wergeles for CS2830 at the University of Missouri */
+
+
+#loginWidget {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+#loginWidget > h1 {
+    margin: 0;
+    padding: 2px;
+}
+#loginWidget form {
+    background-color: #EEE;
+    border: 1px solid #DDD;
+    padding: 0.5em 0;
+    border-radius: 0 0 10px 10px;
+}
+#loginWidget form label {
+    width: 95px;
+    text-align: right;
+    display: inline-block;
+}
+#loginWidget div.stack {
+    margin: 1em 0;
+}
+div.ui-state-error {
+    padding: 4px 0;
+}
+div.pageWidget {
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#login {
+    margin: 0;
+    position: absolute;
+    left: 44%;
+    bottom: 25%;
+    padding: 14px 40px;
+    font-size: 20pt;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    
+    
+}
+
+#login:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#rules {
+    margin: 0;
+    position: absolute;
+    left: 44%;
+    bottom: 25%;
+}
+
+
+
